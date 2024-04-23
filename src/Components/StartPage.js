@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import loadingImg from '../loading.png'; // Import the image directly
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+
 
 const OLLAMA_URL = "http://localhost:11434/api/generate";
 
@@ -69,7 +70,7 @@ function StartPage() {
                     <ul>
                         {
                             responseData.routes.map((route, index) => (
-                                <li key={index}><Link to={`/${route.name}`} props={route}>Route {index}</Link></li>
+                                <li key={index}><Link to={`/${route.name}`} state={{route:route}}>Route {index}</Link></li>
                             ))
                         }
                     </ul>
