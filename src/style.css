@@ -80,3 +80,15 @@ button:hover {
     height: 100%;
     animation: rotate 1s linear infinite; /* Apply the animation */
 }
+
+.iframe-container {
+    display: flex;
+    justify-content: space-between; /* Adjust alignment as per your need */
+    margin-top: 20px;
+}
+
+iframe {
+    width: calc(33.33% - 10px); /* Adjust width as per your need */
+    height: 300px; /* Adjust height as per your need */
+    border: none;
+}
