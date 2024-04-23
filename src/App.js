@@ -1,9 +1,9 @@
-import StartPage from './Components/StartPage'
+import PlaceHolder from './Components/PlaceHolder';
 
 function App() {
   return (
     <div className="App">
-      <StartPage/>
+      <PlaceHolder/>
     </div>
   );
 }

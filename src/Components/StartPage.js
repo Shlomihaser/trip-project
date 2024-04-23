@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import loadingImg from '../loading.png'; // Import the image directly
-import TripInfo from "./TripInfo";
+import { Link } from 'react-router-dom'
 
 const OLLAMA_URL = "http://localhost:11434/api/generate";
 
@@ -67,9 +67,11 @@ function StartPage() {
             {responseData && // Render iframes if data is available
                 <div className="iframe-container">
                     <ul>
-                        {responseData.routes.map((route, index) => (
-                            <li><TripInfo /></li>
-                        ))}
+                        {
+                            responseData.routes.map((route, index) => (
+                                <li key={index}><Link to={`/${route.name}`} props={route}>Route {index}</Link></li>
+                            ))
+                        }
                     </ul>
                 </div>
             }

@@ -2,8 +2,8 @@ import React from "react";
 
 
 
-function TripInfo(){
-
+function TripInfo(props){
+    console.log(props);
     return(<div>
         <h1>TripInfo</h1>
     </div>);
