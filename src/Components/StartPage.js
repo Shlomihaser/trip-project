@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import loadingImg from '../loading.png'; // Import the image directly
 import { Link } from 'react-router-dom';
 
@@ -10,6 +10,7 @@ function StartPage() {
     const [tripKind, setTripKind] = useState("Bicycle");
     const [loading, setLoading] = useState(false);
     const [responseData, setResponseData] = useState(null); // State to hold fetched data
+    const resultRef = useRef(null); // Ref for the result section
 
     const requestData = {
         model: "llama3",
@@ -32,19 +33,26 @@ function StartPage() {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(JSON.parse(data.response));
                 setLoading(false);
                 setResponseData(JSON.parse(data.response));
+                scrollToResult(); // Scroll to the result section after fetching
             })
             .catch(error => {
-                console.error(error);
                 setLoading(false);
             });
     };
 
+    const scrollToResult = () => {
+        resultRef.current.scrollIntoView({ behavior: "smooth" });
+    };
+
+    const scrollToTop = () => {
+        document.querySelector(".trip-input-container").scrollIntoView({ behavior: "smooth" });
+    };
+
     return (
-        <div className="flex-container">
-            <div className="flex-child trip-input-container">
+        <div className="container">
+            <section className="trip-input-container">
                 <h1>Pick your trip</h1>
                 <form className="form-container">
                     <div className="form-group">
@@ -66,12 +74,24 @@ function StartPage() {
                         </button>
                     </div>
                 </form>
-            </div>
-            <div className="flex-child routes-container">
-                { responseData?.routes.map((route, index) => (
-                        <div key={index}className="route-detail"><Link className="route-link" to={`/${route.name}`} state={{ route: route }}>Route {index}</Link></div>
+            </section>
+            <section className="routes-container" ref={resultRef}>
+                <h1>Routes</h1>
+                <div className="route-links">
+                    {responseData?.routes.map((route, index) => (
+                        <div key={index} className="route-block">
+                            <h2>{route.name}</h2>
+                            <p>{route.description}</p>
+                            <div className="route-detail">
+                                <Link className="route-link" to={`/${route.name}`} state={{ route: route }}>View Route</Link>
+                            </div>
+                        </div>
                     ))}
-            </div>
+                </div>
+                <div className="back-button">
+                    <button onClick={() => scrollToTop()}>Go Back</button>
+                </div>
+            </section>
         </div>
     );
 }
