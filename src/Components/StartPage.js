@@ -43,39 +43,35 @@ function StartPage() {
     };
 
     return (
-        <div className="main-container">
-            <h1>Pick your trip</h1>
-            <form className="form-container">
-                <div className="form-group">
-                    <label htmlFor="countryInput">Country</label>
-                    <input type="text" id="countryInput" placeholder="Enter country" onChange={(e) => setCountry(e.target.value)} />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="tripKind">Trip kind</label>
-                    <select name="trip-kind" id="tripKind" onChange={(e) => setTripKind(e.target.value)}>
-                        <option value="bicycle">Bicycle</option>
-                        <option value="walking">Walking</option>
-                        <option value="vehicle">Vehicle</option>
-                    </select>
-                </div>
-                <div className="form-group">
-                    <button id="button-run" onClick={handleSubmit}>
-                        {!loading && <span>Find</span>}
-                        {loading && <img src={loadingImg} alt="Loading..." id="loading-img" />} {/* Make sure to provide an alt text */}
-                    </button>
-                </div>
-            </form>
-            {responseData && // Render iframes if data is available
-                <div className="iframe-container">
-                    <ul>
-                        {
-                            responseData.routes.map((route, index) => (
-                                <li key={index}><Link to={`/${route.name}`} state={{route:route}}>Route {index}</Link></li>
-                            ))
-                        }
-                    </ul>
-                </div>
-            }
+        <div className="flex-container">
+            <div className="flex-child trip-input-container">
+                <h1>Pick your trip</h1>
+                <form className="form-container">
+                    <div className="form-group">
+                        <label htmlFor="countryInput">Country</label>
+                        <input type="text" id="countryInput" placeholder="Enter country" onChange={(e) => setCountry(e.target.value)} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="tripKind">Trip kind</label>
+                        <select name="trip-kind" id="tripKind" onChange={(e) => setTripKind(e.target.value)}>
+                            <option value="bicycle">Bicycle</option>
+                            <option value="walking">Walking</option>
+                            <option value="vehicle">Vehicle</option>
+                        </select>
+                    </div>
+                    <div className="form-group">
+                        <button id="button-run" onClick={handleSubmit}>
+                            {!loading && <span>Find</span>}
+                            {loading && <img src={loadingImg} alt="Loading..." id="loading-img" />} {/* Make sure to provide an alt text */}
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div className="flex-child routes-container">
+                { responseData?.routes.map((route, index) => (
+                        <div key={index}className="route-detail"><Link className="route-link" to={`/${route.name}`} state={{ route: route }}>Route {index}</Link></div>
+                    ))}
+            </div>
         </div>
     );
 }

@@ -11,21 +11,20 @@ body {
     background-color: #f2f2f2;
 }
 
+.flex-container{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    height: 100vh;
+}
+
 /* Container styles */
 .form-container {
     max-width: 600px;
-    margin: 0 auto;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Heading styles */
-h1 {
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom: 20px;
 }
 
 /* Form group styles */
@@ -81,15 +80,40 @@ button:hover {
     animation: rotate 1s linear infinite; /* Apply the animation */
 }
 
-.iframe-container {
+.trip-input-container{
     display: flex;
-    justify-content: space-between; /* Adjust alignment as per your need */
-    margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ccc;
+    width: 100%;
 }
 
-iframe {
-    width: calc(33.33% - 10px); /* Adjust width as per your need */
-    height: 300px; /* Adjust height as per your need */
-    border: none;
+.form-container{
+    width: 600px;
+    margin:30px;
 }
 
+h1{
+    margin-top: 10px;
+}
+
+.routes-container{
+    flex-grow: 1;
+    background-color: #007bff;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.route-detail{
+    background-color: red;
+    width: 80vw;
+    text-align: center;
+}
+
+.route-link{
+
+}
