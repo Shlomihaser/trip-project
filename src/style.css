@@ -11,22 +11,23 @@
     font-style: normal;
     user-select: none;
 }
-.container{
+
+.container {
     scroll-snap-type: y mandatory;
     overflow-y: hidden;
     height: 100vh;
 }
 
-section{
+section {
     height: 100vh;
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    scroll-snap-align:start;
+    scroll-snap-align: start;
 }
 
-h1{
+h1 {
     font-size: 3.2rem;
 }
 
@@ -35,7 +36,7 @@ h1{
     min-width: 50vw;
     min-height: 320px;
     padding: 20px;
-    margin:30px;
+    margin: 30px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -86,6 +87,7 @@ button:hover {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
@@ -93,7 +95,8 @@ button:hover {
 
 #loading-img {
     height: 100%;
-    animation: rotate 1s linear infinite; /* Apply the animation */
+    animation: rotate 1s linear infinite;
+    /* Apply the animation */
 }
 
 /* Add these styles to your existing CSS */
@@ -121,7 +124,7 @@ button:hover {
 }
 
 .route-block h2 {
-    font-size:2.5rem;
+    font-size: 2.5rem;
     margin-bottom: auto;
 }
 
@@ -148,39 +151,43 @@ button:hover {
 
 .trip-info-container {
     margin: 20px auto;
-    width: 80%; /* Adjust as needed */
-  }
-  
-  .route-info {
-    margin-bottom: 20px;
-  }
-  
-  .map-photo-container {
+    width: 80%;
+    /* Adjust as needed */
+}
+
+.route-info {
+    font-size: 1.6em;
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+
+.map-photo-container {
     display: flex;
-  }
-  
-  .map-container {
-    flex: 1;
-  }
-  
-  .photo-container {
-    flex: 1;
-    position: relative;
-  }
-  
-  .loading-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    justify-content: space-around;
+    gap:50px;
+    align-items: center;
+}
+
+.map-container {
+    margin-right: 20px; /* Add space between the map and the loading/image */
+}
+
+.photo-container {
     text-align: center;
-  }
-  
-  .loading-container img {
-    width: 100px; /* Adjust the width of the loading image as needed */
-  }
-  
-  .loading-container p {
-    margin: 10px 0;
-  }
-  
+}
+
+.loading-container {
+    text-align: center;
+}
+
+.loading-container img {
+    max-width: 100px; /* Adjust the maximum width of the loading/image */
+}
+
+
+
+
+
+
+
+

@@ -49,6 +49,7 @@ function TripInfo() {
             if (data.generations.length === 0 || !data.generations[0].img) {
                 setTimeout(() => checkPhotoStatus(id), 50000); // Check again after 1 minute
             } else {
+                console.log(data.generations[0].img);
                 setPhotoUrl(data.generations[0].img);
                 setLoading(false);
             }
@@ -64,7 +65,7 @@ function TripInfo() {
         <div className="trip-info-container">
             <h1 style={{ textAlign: "center" }}>{route.name}</h1>
             <div className="route-info">
-                <p>{route.description}</p>
+                <p>{route.full_description}</p>
                 <p>Distance: {route.distance}</p>
             </div>
             <div className="map-photo-container">
@@ -72,8 +73,7 @@ function TripInfo() {
                     <MapContainer
                         center={[route.start.lat, route.start.lng]}
                         zoom={10}
-                        style={{ height: "400px", width: "100%" }}
-                    >
+                        >
                         <TileLayer
                             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -93,9 +93,8 @@ function TripInfo() {
                             <p>Loading...</p>
                             <p>This may take up to 5 minutes.</p>
                         </div>
-                    ) : (
-                        <img src={photoUrl} alt="Route" style={{ maxWidth: "100%", maxHeight: "400px" }} />
-                    )}
+                    ) : ( <div className="photo"><img src={photoUrl} alt="Route"/></div> )
+                    }
                 </div>
             </div>
         </div>

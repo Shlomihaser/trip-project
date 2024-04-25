@@ -22,7 +22,7 @@ function StartPage() {
     const handleSubmit = (e) => {
         setLoading(true);
         e.preventDefault();
-        requestData.prompt = `3 ${tripKind} routes in ${country},format: {routes:[{name:,description:,distance:,start:{name:,lat:,lng:},end:{name:,lat:,lng:}}]}`;
+        requestData.prompt = `3 ${tripKind} routes in ${country},format: {routes:[{name:,full_description:,abbriviated_description,distance:,start:{name:,lat:,lng:},end:{name:,lat:,lng:}}]}`;
 
         fetch(OLLAMA_URL, {
             method: "POST",
@@ -33,6 +33,7 @@ function StartPage() {
         })
             .then(response => response.json())
             .then(data => {
+                console.log(JSON.parse(data.response))
                 setLoading(false);
                 setResponseData(JSON.parse(data.response));
                 scrollToResult(); // Scroll to the result section after fetching
@@ -81,7 +82,7 @@ function StartPage() {
                     {responseData?.routes.map((route, index) => (
                         <div key={index} className="route-block">
                             <h2>{route.name}</h2>
-                            <p>{route.description}</p>
+                            <p>{route.abbreviated_description}</p>
                             <div className="route-detail">
                                 <Link className="route-link" to={`/${route.name}`} state={{ route: route }}>View Route</Link>
                             </div>
